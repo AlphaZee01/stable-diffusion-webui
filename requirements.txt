@@ -1,28 +1,21 @@
 # Ultra-minimal requirements for virtual try-on API
-# Phase 1: Basic Image Processing + Phase 2: Stable Diffusion Core + Phase 3: API Endpoints
+# Minimal version for Render starter plan compatibility
 
 # FastAPI for API endpoints
 fastapi==0.116.1
 uvicorn[standard]==0.35.0
 python-multipart==0.0.20
 
-# Phase 1: Basic Image Processing
-torch==2.8.0
-torchvision==0.23.0
-numpy==2.3.2
+# Basic image processing (no PyTorch)
 Pillow==11.3.0
-scikit-image==0.25.2
-
-# Phase 2: Stable Diffusion Core (minimal)
-safetensors==0.6.2
-einops==0.8.1
-omegaconf==2.3.0
+numpy==2.3.2
 
 # HTTP requests
 requests==2.32.5
 
-# Removed heavy dependencies to keep it fast:
-# - No accelerate (pulls in pytorch_lightning)
+# Removed heavy dependencies for Render starter plan:
+# - No torch/torchvision (too heavy for starter plan)
+# - No safetensors, einops, omegaconf (SD dependencies)
+# - No scikit-image (heavy image processing)
 # - No transformers ecosystem
-# - No face processing libraries (not essential for basic img2img)
-# - No optimization libraries
+# - No face processing libraries
