@@ -3,7 +3,11 @@ import safetensors
 import torch
 import typing
 
-from transformers import CLIPTokenizer, T5TokenizerFast
+try:
+    from transformers import CLIPTokenizer, T5TokenizerFast
+except ImportError:
+    CLIPTokenizer = None
+    T5TokenizerFast = None
 
 from modules import shared, devices, modelloader, sd_hijack_clip, prompt_parser
 from modules.models.sd3.other_impls import SDClipModel, SDXLClipG, T5XXLModel, SD3Tokenizer

@@ -1,0 +1,10 @@
+[33m5a3909f4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix empty requirements.txt - add all necessary packages for deployment
+[33m92c591c3[m Fix requirements.txt and add verification scripts - ensure deployment works
+[33m7da06e88[m Remove transformers to avoid tokenizers build issues - use minimal requirements for deployment
+[33mdf45db51[m Fix network issues - use original requirements.txt with timeout and retry logic
+[33m4fc94d62[m Simplify deployment approach - use direct pip commands and minimal requirements
+[33m3e53a140[m Add build script to handle problematic packages gracefully and avoid compilation issues
+[33m51dc360a[m Fix build command formatting and simplify requirements for Render deployment
+[33m325537f6[m Fix build issues for Render deployment - remove problematic packages and use pre-compiled wheels
+[33m6f3469ea[m Add production deployment configuration for Render backend
+[33m82a973c0[m changelog

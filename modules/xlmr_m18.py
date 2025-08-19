@@ -1,8 +1,16 @@
-from transformers import BertPreTrainedModel,BertConfig
+try:
+    from transformers import BertPreTrainedModel,BertConfig
+    from transformers.models.xlm_roberta.configuration_xlm_roberta import XLMRobertaConfig
+    from transformers import XLMRobertaModel,XLMRobertaTokenizer
+except ImportError:
+    BertPreTrainedModel = None
+    BertConfig = None
+    XLMRobertaConfig = None
+    XLMRobertaModel = None
+    XLMRobertaTokenizer = None
+
 import torch.nn as nn
 import torch
-from transformers.models.xlm_roberta.configuration_xlm_roberta import XLMRobertaConfig
-from transformers import XLMRobertaModel,XLMRobertaTokenizer
 from typing import Optional
 from modules import torch_utils
 

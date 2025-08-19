@@ -130,7 +130,11 @@ class CheckpointInfo:
 
 try:
     # this silences the annoying "Some weights of the model checkpoint were not used when initializing..." message at start.
+    try:
     from transformers import logging, CLIPModel  # noqa: F401
+except ImportError:
+    logging = None
+    CLIPModel = None
 
     logging.set_verbosity_error()
 except Exception:

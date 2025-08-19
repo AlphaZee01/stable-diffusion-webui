@@ -3,7 +3,11 @@
 import torch
 import math
 from torch import nn
-from transformers import CLIPTokenizer, T5TokenizerFast
+try:
+    from transformers import CLIPTokenizer, T5TokenizerFast
+except ImportError:
+    CLIPTokenizer = None
+    T5TokenizerFast = None
 
 from modules import sd_hijack
 
