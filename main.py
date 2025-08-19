@@ -22,6 +22,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
+# Handle missing pillow-avif-plugin gracefully
+try:
+    import pillow_avif
+except ImportError:
+    print("Warning: pillow-avif-plugin not available. AVIF support disabled.")
+
 def create_production_app():
     """Create and configure the FastAPI application for production"""
     

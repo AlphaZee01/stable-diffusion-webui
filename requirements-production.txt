@@ -1,12 +1,12 @@
 # Production requirements for Stable Diffusion WebUI API
-# Optimized for Render deployment
+# Optimized for Render deployment - using pre-compiled wheels
 
 # Core dependencies
 fastapi>=0.90.1
 uvicorn[standard]>=0.20.0
 gradio==3.41.2
 
-# AI/ML dependencies
+# AI/ML dependencies - use pre-compiled wheels
 torch>=2.0.0
 torchvision>=0.15.0
 transformers==4.30.2
@@ -14,9 +14,9 @@ accelerate>=0.20.0
 diffusers>=0.18.0
 safetensors>=0.3.0
 
-# Image processing
+# Image processing - avoid problematic builds
 Pillow>=9.0.0
-pillow-avif-plugin==1.4.3
+# Removed pillow-avif-plugin due to build issues
 scikit-image>=0.19.0
 kornia>=0.6.0
 facexlib>=0.3.0
@@ -49,3 +49,6 @@ torchsde>=0.2.6
 
 # CORS support
 python-multipart>=0.0.6
+
+# Use pre-compiled tokenizers to avoid Rust compilation
+tokenizers>=0.13.0
