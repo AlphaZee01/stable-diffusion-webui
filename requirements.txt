@@ -28,5 +28,14 @@ safetensors
 scikit-image>=0.19
 tomesd
 torch
+torchvision
 torchdiffeq
 torchsde
+
+# Removed problematic packages for Render deployment:
+# - transformers==4.30.2 (requires tokenizers which fails to compile)
+# - pillow-avif-plugin==1.4.3 (build issues on Render)
+
+# Production additions (installed separately in render.yaml):
+# - uvicorn[standard]>=0.20.0
+# - python-multipart>=0.0.6
