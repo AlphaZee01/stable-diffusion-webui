@@ -80,8 +80,8 @@ def create_minimal_app():
 def main():
     """Main entry point for ultra-minimal production deployment"""
     
-    # Get port from environment - Render provides PORT environment variable
-    port = int(os.getenv('PORT', 10000))
+    # Use fixed port for consistent deployment
+    port = 10000
     host = "0.0.0.0"  # Always bind to all interfaces for Render
     
     print(f"🎯 Starting Ultra-Minimal Virtual Try-On API on {host}:{port}")
