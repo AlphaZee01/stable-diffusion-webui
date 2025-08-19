@@ -1,0 +1,5 @@
+[33m82a973c0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m changelog
+[33m1d7e9eca[m Merge pull request #16275 from AUTOMATIC1111/fix-image-upscale-on-cpu
+[33mc19d0443[m Merge branch 'release_candidate'
+[33m8b3d98c5[m update CHANGELOG
+[33m5bbbda47[m Merge branch 'dev' into release_candidate
