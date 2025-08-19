@@ -31,7 +31,10 @@ for possible_sd_path in possible_sd_paths:
         sd_path = os.path.abspath(possible_sd_path)
         break
 
-assert sd_path is not None, f"Couldn't find Stable Diffusion in any of: {possible_sd_paths}"
+# For minimal img2img setup, create a dummy path if not found
+if sd_path is None:
+    print("Warning: Stable Diffusion repository not found. Using minimal img2img setup.")
+    sd_path = script_path  # Use current directory as fallback
 
 mute_sdxl_imports()
 
