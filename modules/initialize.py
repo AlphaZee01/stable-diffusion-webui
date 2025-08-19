@@ -14,9 +14,12 @@ def imports():
 
     import torch  # noqa: F401
     startup_timer.record("import torch")
-    import pytorch_lightning  # noqa: F401
+    try:
+        import pytorch_lightning  # noqa: F401
+        warnings.filterwarnings(action="ignore", category=DeprecationWarning, module="pytorch_lightning")
+    except ImportError:
+        print("Warning: pytorch_lightning not available. Some features may be limited.")
     startup_timer.record("import torch")
-    warnings.filterwarnings(action="ignore", category=DeprecationWarning, module="pytorch_lightning")
     warnings.filterwarnings(action="ignore", category=UserWarning, module="torchvision")
 
     os.environ.setdefault('GRADIO_ANALYTICS_ENABLED', 'False')

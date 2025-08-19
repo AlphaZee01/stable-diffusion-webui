@@ -1,41 +1,38 @@
-# Minimal requirements for img2img virtual try-on functionality
-# Core ML and image processing
-torch
-torchvision
-numpy
-Pillow
-scikit-image>=0.19
+# Ultra-minimal requirements for img2img virtual try-on
+# Only absolute essentials - no optional dependencies
+
+# Core ML framework
+torch==2.8.0
+torchvision==0.23.0
+
+# Basic Python packages
+numpy==2.3.2
+Pillow==11.3.0
 
 # FastAPI for API endpoints
-fastapi>=0.90.1
-uvicorn[standard]>=0.20.0
-python-multipart>=0.0.6
+fastapi==0.116.1
+uvicorn[standard]==0.35.0
+python-multipart==0.0.20
 
-# Essential Stable Diffusion components
-accelerate
-safetensors
-einops
-omegaconf
-requests
+# Essential Stable Diffusion components only (minimal)
+safetensors==0.6.2
+einops==0.8.1
+omegaconf==2.3.0
 
-# Image processing utilities
-kornia
-resize-right
-blendmodes
+# Image processing (minimal)
+scikit-image==0.25.2
+kornia==0.8.1
 
 # File handling
-GitPython
-psutil
+GitPython==3.1.45
+psutil==7.0.0
 
-# Removed for faster deployment:
-# - gradio (not needed for API-only)
-# - facexlib (not essential for basic img2img)
-# - clean-fid (not needed for try-on)
-# - pytorch_lightning (heavy, not essential)
-# - torchdiffeq, torchsde (not needed for basic img2img)
-# - tomesd (optimization, not essential)
-# - open-clip-torch (not needed for img2img)
-# - diskcache (not essential)
-# - inflection, jsonmerge, lark (not essential)
-# - piexif (not essential)
-# - protobuf (not essential)
+# HTTP requests
+requests==2.32.5
+
+# Removed ALL heavy dependencies:
+# - No accelerate (pulls in pytorch_lightning and many other heavy packages)
+# - No transformers ecosystem
+# - No face processing libraries
+# - No optimization libraries
+# - No additional ML frameworks
