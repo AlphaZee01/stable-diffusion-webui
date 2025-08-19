@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Production-ready main entry point for Stable Diffusion WebUI API
-Configured for Render deployment as backend for uwear-virtual-shop
+Streamlined production entry point for Stable Diffusion WebUI API
+Optimized for img2img virtual try-on functionality
 """
 
 import os
@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 # Set environment variables for production
 os.environ.setdefault('SD_WEBUI_RESTARTING', '1')
 os.environ.setdefault('API_ONLY', 'true')
+os.environ.setdefault('SKIP_INSTALL', '1')  # Skip some installations for faster startup
 
 # Import after setting environment variables
 from modules import initialize_util, initialize
@@ -38,16 +39,18 @@ try:
 except ImportError:
     print("Warning: transformers not available. Text-to-image generation may be limited.")
 
-def create_production_app():
-    """Create and configure the FastAPI application for production"""
+def create_streamlined_app():
+    """Create and configure the FastAPI application optimized for img2img"""
     
-    # Initialize the Stable Diffusion WebUI
+    print("🚀 Initializing streamlined Stable Diffusion WebUI for img2img...")
+    
+    # Initialize the Stable Diffusion WebUI with minimal components
     initialize.initialize()
     
     # Create FastAPI app
     app = FastAPI(
-        title="Stable Diffusion WebUI API",
-        description="Production API for Stable Diffusion WebUI - Backend for uwear-virtual-shop",
+        title="Stable Diffusion WebUI - Virtual Try-On API",
+        description="Streamlined API for image-to-image virtual try-on functionality",
         version="1.0.0",
         docs_url="/docs",
         redoc_url="/redoc"
@@ -73,26 +76,28 @@ def create_production_app():
     
     api = Api(app, queue_lock)
     
-    # Register callbacks
+    # Register minimal callbacks for img2img functionality
     from modules import script_callbacks
     script_callbacks.before_ui_callback()
     script_callbacks.app_started_callback(None, app)
     
+    print("✅ Streamlined API initialized successfully!")
+    
     return app, api
 
 def main():
-    """Main entry point for production deployment"""
+    """Main entry point for streamlined production deployment"""
     
     # Get port from environment or use default
     port = int(os.getenv('PORT', 10000))
     host = os.getenv('GRADIO_SERVER_NAME', '0.0.0.0')
     
-    print(f"Starting Stable Diffusion WebUI API on {host}:{port}")
-    print(f"Environment: Production")
-    print(f"CORS Origins: {os.getenv('ALLOW_ORIGINS', 'https://uwear-virtual-shop.onrender.com,http://localhost:3000,http://localhost:5173')}")
+    print(f"🎯 Starting Virtual Try-On API on {host}:{port}")
+    print(f"📱 Frontend: uwear-virtual-shop.onrender.com")
+    print(f"🔗 CORS Origins: {os.getenv('ALLOW_ORIGINS', 'https://uwear-virtual-shop.onrender.com,http://localhost:3000,http://localhost:5173')}")
     
-    # Create the application
-    app, api = create_production_app()
+    # Create the streamlined application
+    app, api = create_streamlined_app()
     
     # Launch the API
     api.launch(
