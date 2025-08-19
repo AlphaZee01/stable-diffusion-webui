@@ -33,6 +33,11 @@ try:
 except ImportError:
     print("Warning: tokenizers not available. Some text processing features may be limited.")
 
+try:
+    import transformers
+except ImportError:
+    print("Warning: transformers not available. Text-to-image generation may be limited.")
+
 def create_production_app():
     """Create and configure the FastAPI application for production"""
     
