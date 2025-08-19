@@ -1,10 +1,9 @@
-# Render-specific requirements - minimal modifications to avoid build issues
-# Based on original requirements.txt
+# Render deployment requirements - based on original requirements.txt
+# Minimal changes to avoid build issues
 
 GitPython
 Pillow
 accelerate
-
 blendmodes
 clean-fid
 diskcache
@@ -19,14 +18,12 @@ lark
 numpy
 omegaconf
 open-clip-torch
-
 piexif
 protobuf==3.20.0
 psutil
 pytorch_lightning
 requests
 resize-right
-
 safetensors
 scikit-image>=0.19
 tomesd
@@ -35,9 +32,8 @@ torchdiffeq
 torchsde
 transformers==4.30.2
 
-# Removed problematic packages
-# pillow-avif-plugin==1.4.3  # Causes build issues on Render
-
-# Added for production
+# Production additions
 uvicorn[standard]>=0.20.0
 python-multipart>=0.0.6
+
+# Note: pillow-avif-plugin removed due to build issues on Render
