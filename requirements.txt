@@ -1,23 +1,28 @@
-# Ultra-minimal requirements for basic API server
-# Only absolute essentials for FastAPI - no Stable Diffusion dependencies
+# Ultra-minimal requirements for virtual try-on API
+# Phase 1: Basic Image Processing + Phase 2: Stable Diffusion Core + Phase 3: API Endpoints
 
 # FastAPI for API endpoints
 fastapi==0.116.1
 uvicorn[standard]==0.35.0
 python-multipart==0.0.20
 
-# Basic Python packages
+# Phase 1: Basic Image Processing
+torch==2.8.0
+torchvision==0.23.0
 numpy==2.3.2
 Pillow==11.3.0
+scikit-image==0.25.2
+
+# Phase 2: Stable Diffusion Core (minimal)
+safetensors==0.6.2
+einops==0.8.1
+omegaconf==2.3.0
 
 # HTTP requests
 requests==2.32.5
 
-# Removed ALL Stable Diffusion dependencies:
-# - No torch/torchvision (not needed for basic API)
-# - No safetensors, einops, omegaconf
-# - No scikit-image, kornia
-# - No GitPython, psutil
-# - No accelerate, transformers ecosystem
-# - No face processing libraries
+# Removed heavy dependencies to keep it fast:
+# - No accelerate (pulls in pytorch_lightning)
+# - No transformers ecosystem
+# - No face processing libraries (not essential for basic img2img)
 # - No optimization libraries
