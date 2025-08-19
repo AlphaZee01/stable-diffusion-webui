@@ -80,23 +80,26 @@ def create_minimal_app():
 def main():
     """Main entry point for ultra-minimal production deployment"""
     
-    # Get port from environment or use default
+    # Get port from environment - Render provides PORT environment variable
     port = int(os.getenv('PORT', 10000))
-    host = os.getenv('GRADIO_SERVER_NAME', '0.0.0.0')
+    host = "0.0.0.0"  # Always bind to all interfaces for Render
     
     print(f"🎯 Starting Ultra-Minimal Virtual Try-On API on {host}:{port}")
     print(f"📱 Frontend: uwear-virtual-shop.onrender.com")
     print(f"🔗 CORS Origins: {os.getenv('ALLOW_ORIGINS', 'https://uwear-virtual-shop.onrender.com,http://localhost:3000,http://localhost:5173')}")
+    print(f"🌐 Server will be available at: http://{host}:{port}")
     
     # Create the minimal application
     app = create_minimal_app()
     
     # Launch the API with uvicorn directly
+    print(f"🚀 Starting uvicorn server...")
     uvicorn.run(
         app,
         host=host,
         port=port,
-        log_level="info"
+        log_level="info",
+        access_log=True
     )
 
 if __name__ == "__main__":
