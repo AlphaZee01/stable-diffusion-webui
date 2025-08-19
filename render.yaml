@@ -3,7 +3,7 @@ services:
     name: stable-diffusion-webui-backend
     env: python
     plan: starter
-    buildCommand: pip install --upgrade pip && pip install --no-cache-dir --prefer-binary -r requirements-render.txt
+    buildCommand: pip install --upgrade pip && pip install --no-cache-dir --timeout 300 --retries 3 -r requirements.txt && pip install uvicorn[standard] python-multipart
     startCommand: python main.py
     envVars:
       - key: PYTHON_VERSION
@@ -22,9 +22,5 @@ services:
         value: "true"
       - key: ALLOW_ORIGINS
         value: "https://uwear-virtual-shop.onrender.com,http://localhost:3000,http://localhost:5173"
-      - key: PIP_NO_BUILD_ISOLATION
-        value: "false"
-      - key: PIP_PREFER_BINARY
-        value: "true"
     healthCheckPath: /docs
     autoDeploy: true
